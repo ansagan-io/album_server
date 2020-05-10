@@ -82,7 +82,7 @@ def albums():
     )
     if not valid_album(album_to_add):
         message = f"You are trying to send inappropriate data type to Database. Please try again"
-        return HTTPError(422, message)
+        return HTTPError(400, message)
     elif album_to_add.album in [album.album for album in find(album_to_add.artist)]:
         message = f"Album of {album_to_add.artist} named {album_to_add.album} already exist in DataBase"
         return HTTPError(409, message)
